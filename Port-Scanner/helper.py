@@ -1,4 +1,5 @@
 import socket 
+from termcolor import colored
 
 ######CONFIG######
 socket.setdefaulttimeout(3)
@@ -8,8 +9,9 @@ def port_scan(ip:str,ports):
     connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # IP manzil (v4) va TCP da aloqa shakllantirish
     for port in ports:
         if connection.connect_ex((ip,port)):
-            print("-{X}- ",port," port yopiq!")
+            print(colored("-{X}- " + str(port) +" port yopiq!","red"))
         else:
-            print("-{Y}- ",port," port ochiq :)")
-         
+            print(colored("-{Y}- " + str(port) + " port ochiq :)","green"))
+    
+    connection.close()      
 
